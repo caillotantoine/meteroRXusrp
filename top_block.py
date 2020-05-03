@@ -19,6 +19,7 @@ if __name__ == '__main__':
             print "Warning: failed to XInitThreads()"
 
 from PyQt4 import Qt
+from PyQt4.QtCore import QObject, pyqtSlot
 from datetime import datetime
 from gnuradio import analog
 from gnuradio import blocks
@@ -27,11 +28,11 @@ from gnuradio import eng_notation
 from gnuradio import filter
 from gnuradio import gr
 from gnuradio import qtgui
-from gnuradio import uhd
 from gnuradio.eng_option import eng_option
 from gnuradio.filter import firdes
 from gnuradio.qtgui import Range, RangeWidget
 from optparse import OptionParser
+import osmosdr
 import sip
 import sys
 import time
@@ -74,6 +75,7 @@ class top_block(gr.top_block, Qt.QWidget):
         self.signal_samp_rate = signal_samp_rate = usrp_samp_rate / decim_factor
         self.path_to_save_dir = path_to_save_dir = "/Users/caillotantoine/"
         self.samp_per_sec = samp_per_sec = (signal_samp_rate * 1.0) / (symbol_rate * 1.0)
+        self.rx_freq_old = rx_freq_old = 137.1e6
         self.rx_freq = rx_freq = 137.1e6
         self.rf_gain = rf_gain = 10
         self.pll_alpha = pll_alpha = 0.015
@@ -95,6 +97,22 @@ class top_block(gr.top_block, Qt.QWidget):
         self.qtgui_tab_widget_0_layout_1.addLayout(self.qtgui_tab_widget_0_grid_layout_1)
         self.qtgui_tab_widget_0.addTab(self.qtgui_tab_widget_0_widget_1, 'Decoding')
         self.top_grid_layout.addWidget(self.qtgui_tab_widget_0)
+        self._rx_freq_options = (137.1e6, 137.9e6, )
+        self._rx_freq_labels = ('137.1 MHz', '137.9 MHz', )
+        self._rx_freq_tool_bar = Qt.QToolBar(self)
+        self._rx_freq_tool_bar.addWidget(Qt.QLabel('RX Frequency'+": "))
+        self._rx_freq_combo_box = Qt.QComboBox()
+        self._rx_freq_tool_bar.addWidget(self._rx_freq_combo_box)
+        for label in self._rx_freq_labels: self._rx_freq_combo_box.addItem(label)
+        self._rx_freq_callback = lambda i: Qt.QMetaObject.invokeMethod(self._rx_freq_combo_box, "setCurrentIndex", Qt.Q_ARG("int", self._rx_freq_options.index(i)))
+        self._rx_freq_callback(self.rx_freq)
+        self._rx_freq_combo_box.currentIndexChanged.connect(
+        	lambda i: self.set_rx_freq(self._rx_freq_options[i]))
+        self.qtgui_tab_widget_0_grid_layout_0.addWidget(self._rx_freq_tool_bar, 0, 1, 1, 1)
+        for r in range(0, 1):
+            self.qtgui_tab_widget_0_grid_layout_0.setRowStretch(r, 1)
+        for c in range(1, 2):
+            self.qtgui_tab_widget_0_grid_layout_0.setColumnStretch(c, 1)
         self._rf_gain_range = Range(1, 20, 1, 10, 200)
         self._rf_gain_win = RangeWidget(self._rf_gain_range, self.set_rf_gain, 'RF input gain', "counter_slider", float)
         self.qtgui_tab_widget_0_grid_layout_0.addWidget(self._rf_gain_win, 0, 0, 1, 1)
@@ -116,6 +134,19 @@ class top_block(gr.top_block, Qt.QWidget):
             self.qtgui_tab_widget_0_grid_layout_1.setRowStretch(r, 1)
         for c in range(0, 1):
             self.qtgui_tab_widget_0_grid_layout_1.setColumnStretch(c, 1)
+        self.rtlsdr_source_0 = osmosdr.source( args="numchan=" + str(1) + " " + '' )
+        self.rtlsdr_source_0.set_sample_rate(usrp_samp_rate)
+        self.rtlsdr_source_0.set_center_freq(rx_freq, 0)
+        self.rtlsdr_source_0.set_freq_corr(0, 0)
+        self.rtlsdr_source_0.set_dc_offset_mode(0, 0)
+        self.rtlsdr_source_0.set_iq_balance_mode(2, 0)
+        self.rtlsdr_source_0.set_gain_mode(False, 0)
+        self.rtlsdr_source_0.set_gain(rf_gain, 0)
+        self.rtlsdr_source_0.set_if_gain(10, 0)
+        self.rtlsdr_source_0.set_bb_gain(20, 0)
+        self.rtlsdr_source_0.set_antenna('', 0)
+        self.rtlsdr_source_0.set_bandwidth(usrp_samp_rate, 0)
+
         self.root_raised_cosine_filter_0 = filter.fir_filter_ccf(1, firdes.root_raised_cosine(
         	1, signal_samp_rate, symbol_rate, 0.6, 361))
         self.rational_resampler_xxx_0 = filter.rational_resampler_ccc(
@@ -159,10 +190,10 @@ class top_block(gr.top_block, Qt.QWidget):
         self.qtgui_waterfall_sink_x_0.set_intensity_range(-140, 10)
 
         self._qtgui_waterfall_sink_x_0_win = sip.wrapinstance(self.qtgui_waterfall_sink_x_0.pyqwidget(), Qt.QWidget)
-        self.qtgui_tab_widget_0_grid_layout_0.addWidget(self._qtgui_waterfall_sink_x_0_win, 3, 0, 1, 1)
+        self.qtgui_tab_widget_0_grid_layout_0.addWidget(self._qtgui_waterfall_sink_x_0_win, 3, 0, 1, 2)
         for r in range(3, 4):
             self.qtgui_tab_widget_0_grid_layout_0.setRowStretch(r, 1)
-        for c in range(0, 1):
+        for c in range(0, 2):
             self.qtgui_tab_widget_0_grid_layout_0.setColumnStretch(c, 1)
         self.qtgui_freq_sink_x_0 = qtgui.freq_sink_c(
         	1024, #size
@@ -206,10 +237,10 @@ class top_block(gr.top_block, Qt.QWidget):
             self.qtgui_freq_sink_x_0.set_line_alpha(i, alphas[i])
 
         self._qtgui_freq_sink_x_0_win = sip.wrapinstance(self.qtgui_freq_sink_x_0.pyqwidget(), Qt.QWidget)
-        self.qtgui_tab_widget_0_grid_layout_0.addWidget(self._qtgui_freq_sink_x_0_win, 1, 0, 1, 1)
+        self.qtgui_tab_widget_0_grid_layout_0.addWidget(self._qtgui_freq_sink_x_0_win, 1, 0, 1, 2)
         for r in range(1, 2):
             self.qtgui_tab_widget_0_grid_layout_0.setRowStretch(r, 1)
-        for c in range(0, 1):
+        for c in range(0, 2):
             self.qtgui_tab_widget_0_grid_layout_0.setColumnStretch(c, 1)
         self.qtgui_const_sink_x_0 = qtgui.const_sink_c(
         	1024, #size
@@ -265,28 +296,12 @@ class top_block(gr.top_block, Qt.QWidget):
         self.analog_rail_ff_0 = analog.rail_ff(-1, 1)
         self.analog_agc_xx_0 = analog.agc_cc(100e-3, 500e-3, 1.0)
         self.analog_agc_xx_0.set_max_gain(4e3)
-        self.USRP = uhd.usrp_source(
-        	",".join(("", "")),
-        	uhd.stream_args(
-        		cpu_format="fc32",
-        		args='peak=0.003906',
-        		channels=range(1),
-        	),
-        )
-        self.USRP.set_samp_rate(usrp_samp_rate)
-        self.USRP.set_center_freq(rx_freq, 0)
-        self.USRP.set_gain(rf_gain, 0)
-        self.USRP.set_antenna('TX/RX', 0)
-        self.USRP.set_bandwidth(usrp_samp_rate, 0)
-        self.USRP.set_auto_dc_offset(True, 0)
-        self.USRP.set_auto_iq_balance(True, 0)
 
 
 
         ##################################################
         # Connections
         ##################################################
-        self.connect((self.USRP, 0), (self.rational_resampler_xxx_0, 0))
         self.connect((self.analog_agc_xx_0, 0), (self.qtgui_freq_sink_x_0, 0))
         self.connect((self.analog_agc_xx_0, 0), (self.qtgui_waterfall_sink_x_0, 0))
         self.connect((self.analog_agc_xx_0, 0), (self.root_raised_cosine_filter_0, 0))
@@ -298,6 +313,7 @@ class top_block(gr.top_block, Qt.QWidget):
         self.connect((self.digital_costas_loop_cc_0, 0), (self.digital_clock_recovery_mm_xx_0, 0))
         self.connect((self.rational_resampler_xxx_0, 0), (self.analog_agc_xx_0, 0))
         self.connect((self.root_raised_cosine_filter_0, 0), (self.digital_costas_loop_cc_0, 0))
+        self.connect((self.rtlsdr_source_0, 0), (self.rational_resampler_xxx_0, 0))
 
     def closeEvent(self, event):
         self.settings = Qt.QSettings("GNU Radio", "top_block")
@@ -310,8 +326,8 @@ class top_block(gr.top_block, Qt.QWidget):
     def set_usrp_samp_rate(self, usrp_samp_rate):
         self.usrp_samp_rate = usrp_samp_rate
         self.set_signal_samp_rate(self.usrp_samp_rate / self.decim_factor)
-        self.USRP.set_samp_rate(self.usrp_samp_rate)
-        self.USRP.set_bandwidth(self.usrp_samp_rate, 0)
+        self.rtlsdr_source_0.set_sample_rate(self.usrp_samp_rate)
+        self.rtlsdr_source_0.set_bandwidth(self.usrp_samp_rate, 0)
 
     def get_decim_factor(self):
         return self.decim_factor
@@ -353,22 +369,28 @@ class top_block(gr.top_block, Qt.QWidget):
         self.samp_per_sec = samp_per_sec
         self.digital_clock_recovery_mm_xx_0.set_omega(self.samp_per_sec)
 
+    def get_rx_freq_old(self):
+        return self.rx_freq_old
+
+    def set_rx_freq_old(self, rx_freq_old):
+        self.rx_freq_old = rx_freq_old
+
     def get_rx_freq(self):
         return self.rx_freq
 
     def set_rx_freq(self, rx_freq):
         self.rx_freq = rx_freq
+        self._rx_freq_callback(self.rx_freq)
+        self.rtlsdr_source_0.set_center_freq(self.rx_freq, 0)
         self.qtgui_waterfall_sink_x_0.set_frequency_range(self.rx_freq, self.signal_samp_rate)
         self.qtgui_freq_sink_x_0.set_frequency_range(self.rx_freq, self.signal_samp_rate)
-        self.USRP.set_center_freq(self.rx_freq, 0)
 
     def get_rf_gain(self):
         return self.rf_gain
 
     def set_rf_gain(self, rf_gain):
         self.rf_gain = rf_gain
-        self.USRP.set_gain(self.rf_gain, 0)
-
+        self.rtlsdr_source_0.set_gain(self.rf_gain, 0)
 
     def get_pll_alpha(self):
         return self.pll_alpha
