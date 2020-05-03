@@ -23,7 +23,7 @@ You may also use the classic LRPTofflineDecoder through WINE.
 *[UPCOMING]* You may disable the USRP source block and enable the RTL-SDR one
 
 # QT Window flickers
-If your window flickers and your eyes start bleeding, you have to edit the config file.
+If your window flickers and your eyes start bleeding, you have to edit the config file (known issue [2583](https://github.com/gnuradio/gnuradio/issues/2583)).
 ```bash
 nano ~/.gnuradio/config.conf
 ```
@@ -40,3 +40,6 @@ to
 #style = raster
 style = native
 ```
+
+# Sharing
+Same with [Otti's page](https://github.com/otti-soft/meteor-m2-lrpt): Feel free to modify and improve these flow graphs, but please share :-)
