@@ -182,11 +182,11 @@ class top_block(gr.top_block, Qt.QWidget):
         self.qtgui_waterfall_sink_x_0.set_intensity_range(-140, 10)
 
         self._qtgui_waterfall_sink_x_0_win = sip.wrapinstance(self.qtgui_waterfall_sink_x_0.pyqwidget(), Qt.QWidget)
-        self.qtgui_tab_widget_0_grid_layout_1.addWidget(self._qtgui_waterfall_sink_x_0_win, 3, 0, 1, 2)
-        for r in range(3, 4):
-            self.qtgui_tab_widget_0_grid_layout_1.setRowStretch(r, 1)
+        self.qtgui_tab_widget_0_grid_layout_0.addWidget(self._qtgui_waterfall_sink_x_0_win, 2, 0, 1, 2)
+        for r in range(2, 3):
+            self.qtgui_tab_widget_0_grid_layout_0.setRowStretch(r, 1)
         for c in range(0, 2):
-            self.qtgui_tab_widget_0_grid_layout_1.setColumnStretch(c, 1)
+            self.qtgui_tab_widget_0_grid_layout_0.setColumnStretch(c, 1)
         self.qtgui_freq_sink_x_1 = qtgui.freq_sink_c(
         	1024, #size
         	firdes.WIN_BLACKMAN_hARRIS, #wintype
@@ -205,7 +205,7 @@ class top_block(gr.top_block, Qt.QWidget):
         self.qtgui_freq_sink_x_1.enable_axis_labels(True)
         self.qtgui_freq_sink_x_1.enable_control_panel(False)
 
-        if not True:
+        if not False:
           self.qtgui_freq_sink_x_1.disable_legend()
 
         if "complex" == "float" or "complex" == "msg_float":
@@ -357,9 +357,9 @@ class top_block(gr.top_block, Qt.QWidget):
         # Connections
         ##################################################
         self.connect((self.USRP, 0), (self.qtgui_freq_sink_x_1, 0))
+        self.connect((self.USRP, 0), (self.qtgui_waterfall_sink_x_0, 0))
         self.connect((self.USRP, 0), (self.rational_resampler_xxx_0, 0))
         self.connect((self.analog_agc_xx_0, 0), (self.qtgui_freq_sink_x_0, 0))
-        self.connect((self.analog_agc_xx_0, 0), (self.qtgui_waterfall_sink_x_0, 0))
         self.connect((self.analog_agc_xx_0, 0), (self.root_raised_cosine_filter_0, 0))
         self.connect((self.analog_rail_ff_0, 0), (self.blocks_float_to_char_0, 0))
         self.connect((self.blocks_float_to_char_0, 0), (self.blocks_file_sink_0, 0))
