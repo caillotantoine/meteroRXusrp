@@ -33,6 +33,7 @@ from gnuradio.eng_option import eng_option
 from gnuradio.filter import firdes
 from gnuradio.qtgui import Range, RangeWidget
 from optparse import OptionParser
+import os.path
 import sip
 import sys
 import time
@@ -73,11 +74,11 @@ class top_block(gr.top_block, Qt.QWidget):
         self.decim_factor = decim_factor = 16
         self.symbol_rate = symbol_rate = 72000
         self.signal_samp_rate = signal_samp_rate = usrp_samp_rate / decim_factor
-        self.path_to_save_dir = path_to_save_dir = "/Users/caillotantoine/"
+        self.path_to_save_dir = path_to_save_dir = os.path.expanduser("~/Desktop")
         self.samp_per_sec = samp_per_sec = (signal_samp_rate * 1.0) / (symbol_rate * 1.0)
         self.rx_freq_old = rx_freq_old = 137.1e6
         self.rx_freq = rx_freq = 137.1e6
-        self.rf_gain = rf_gain = 10
+        self.rf_gain = rf_gain = 20
         self.pll_alpha = pll_alpha = 0.015
         self.file_path = file_path = path_to_save_dir + "/LRPT_" + datetime.now().strftime("%d%m%Y_%H%M")+".s"
         self.clock_alpha = clock_alpha = 0.001
@@ -118,7 +119,7 @@ class top_block(gr.top_block, Qt.QWidget):
             self.qtgui_tab_widget_0_grid_layout_0.setRowStretch(r, 1)
         for c in range(1, 2):
             self.qtgui_tab_widget_0_grid_layout_0.setColumnStretch(c, 1)
-        self._rf_gain_range = Range(1, 40, 1, 10, 200)
+        self._rf_gain_range = Range(0, 65, 5, 20, 200)
         self._rf_gain_win = RangeWidget(self._rf_gain_range, self.set_rf_gain, 'RF input gain', "counter_slider", float)
         self.qtgui_tab_widget_0_grid_layout_0.addWidget(self._rf_gain_win, 0, 0, 1, 1)
         for r in range(0, 1):
@@ -329,9 +330,11 @@ class top_block(gr.top_block, Qt.QWidget):
         self.digital_costas_loop_cc_0 = digital.costas_loop_cc(pll_alpha, 4, False)
         self.digital_constellation_soft_decoder_cf_0 = digital.constellation_soft_decoder_cf(digital.constellation_calcdist(([-1-1j, -1+1j, 1+1j, 1-1j]), ([0, 1, 3, 2]), 4, 1).base())
         self.digital_clock_recovery_mm_xx_0 = digital.clock_recovery_mm_cc(samp_per_sec, clock_alpha**2/4.0, 0.5, clock_alpha, 0.005)
+        self.blocks_wavfile_sink_1 = blocks.wavfile_sink(file_path+"_rawIQ.wav", 2, int(usrp_samp_rate/decim_factor), 8)
         self.blocks_float_to_char_0 = blocks.float_to_char(1, 127)
         self.blocks_file_sink_0 = blocks.file_sink(gr.sizeof_char*1, file_path, False)
         self.blocks_file_sink_0.set_unbuffered(False)
+        self.blocks_complex_to_float_0 = blocks.complex_to_float(1)
         self.analog_rail_ff_0 = analog.rail_ff(-1, 1)
         self.analog_agc_xx_0 = analog.agc_cc(100e-3, 500e-3, 1.0)
         self.analog_agc_xx_0.set_max_gain(4e3)
@@ -362,12 +365,15 @@ class top_block(gr.top_block, Qt.QWidget):
         self.connect((self.analog_agc_xx_0, 0), (self.qtgui_freq_sink_x_0, 0))
         self.connect((self.analog_agc_xx_0, 0), (self.root_raised_cosine_filter_0, 0))
         self.connect((self.analog_rail_ff_0, 0), (self.blocks_float_to_char_0, 0))
+        self.connect((self.blocks_complex_to_float_0, 1), (self.blocks_wavfile_sink_1, 1))
+        self.connect((self.blocks_complex_to_float_0, 0), (self.blocks_wavfile_sink_1, 0))
         self.connect((self.blocks_float_to_char_0, 0), (self.blocks_file_sink_0, 0))
         self.connect((self.digital_clock_recovery_mm_xx_0, 0), (self.digital_constellation_soft_decoder_cf_0, 0))
         self.connect((self.digital_clock_recovery_mm_xx_0, 0), (self.qtgui_const_sink_x_0, 0))
         self.connect((self.digital_constellation_soft_decoder_cf_0, 0), (self.analog_rail_ff_0, 0))
         self.connect((self.digital_costas_loop_cc_0, 0), (self.digital_clock_recovery_mm_xx_0, 0))
         self.connect((self.rational_resampler_xxx_0, 0), (self.analog_agc_xx_0, 0))
+        self.connect((self.rational_resampler_xxx_0, 0), (self.blocks_complex_to_float_0, 0))
         self.connect((self.root_raised_cosine_filter_0, 0), (self.digital_costas_loop_cc_0, 0))
 
     def closeEvent(self, event):
@@ -462,6 +468,7 @@ class top_block(gr.top_block, Qt.QWidget):
 
     def set_file_path(self, file_path):
         self.file_path = file_path
+        self.blocks_wavfile_sink_1.open(self.file_path+"_rawIQ.wav")
         self.blocks_file_sink_0.open(self.file_path)
 
     def get_clock_alpha(self):

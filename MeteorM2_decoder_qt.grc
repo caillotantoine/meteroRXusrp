@@ -194,7 +194,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(152, 172)</value>
+      <value>(208, 172)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -221,7 +221,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(320, 108)</value>
+      <value>(312, 100)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -233,7 +233,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>value</key>
-      <value>os.path.expanduser("~")</value>
+      <value>os.path.expanduser("~/Desktop")</value>
     </param>
   </block>
   <block>
@@ -343,15 +343,15 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>start</key>
-      <value>1</value>
+      <value>0</value>
     </param>
     <param>
       <key>step</key>
-      <value>1</value>
+      <value>5</value>
     </param>
     <param>
       <key>stop</key>
-      <value>40</value>
+      <value>65</value>
     </param>
     <param>
       <key>rangeType</key>
@@ -594,45 +594,6 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     <param>
       <key>value</key>
       <value>2.5e6</value>
-    </param>
-  </block>
-  <block>
-    <key>variable_qtgui_entry</key>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(968, 500)</value>
-    </param>
-    <param>
-      <key>gui_hint</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>variable_qtgui_entry_0</value>
-    </param>
-    <param>
-      <key>label</key>
-      <value></value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>int</value>
     </param>
   </block>
   <block>
@@ -2053,7 +2014,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(712, 596)</value>
+      <value>(712, 764)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2078,6 +2039,49 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     <param>
       <key>minoutbuf</key>
       <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>blocks_complex_to_float</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(824, 120)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>270</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>blocks_complex_to_float_0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>1</value>
     </param>
   </block>
   <block>
@@ -2108,7 +2112,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1040, 584)</value>
+      <value>(1040, 752)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2151,7 +2155,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(880, 596)</value>
+      <value>(880, 764)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2179,6 +2183,53 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
   </block>
   <block>
+    <key>blocks_wavfile_sink</key>
+    <param>
+      <key>bits_per_sample</key>
+      <value>8</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>file</key>
+      <value>file_path+"_rawIQ.wav"</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(824, 312)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>270</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>blocks_wavfile_sink_1</value>
+    </param>
+    <param>
+      <key>nchan</key>
+      <value>2</value>
+    </param>
+    <param>
+      <key>samp_rate</key>
+      <value>int(usrp_samp_rate/decim_factor)</value>
+    </param>
+  </block>
+  <block>
     <key>digital_clock_recovery_mm_xx</key>
     <param>
       <key>alias</key>
@@ -2198,7 +2249,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(456, 396)</value>
+      <value>(464, 572)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2265,7 +2316,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(456, 596)</value>
+      <value>(456, 764)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2304,7 +2355,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(656, 328)</value>
+      <value>(656, 504)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2398,6 +2449,37 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
   </block>
   <block>
+    <key>import</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(120, 172)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>import_1_0</value>
+    </param>
+    <param>
+      <key>import</key>
+      <value>import os.path</value>
+    </param>
+  </block>
+  <block>
     <key>qtgui_const_sink_x</key>
     <param>
       <key>autoscale</key>
@@ -2425,7 +2507,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(456, 516)</value>
+      <value>(456, 684)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -3091,7 +3173,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(720, 120)</value>
+      <value>(472, 328)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -3099,7 +3181,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>_rotation</key>
-      <value>0</value>
+      <value>180</value>
     </param>
     <param>
       <key>grid</key>
@@ -3493,7 +3575,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(720, 200)</value>
+      <value>(472, 400)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -3501,7 +3583,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>_rotation</key>
-      <value>0</value>
+      <value>180</value>
     </param>
     <param>
       <key>grid</key>
@@ -3771,7 +3853,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(864, 356)</value>
+      <value>(864, 532)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -5254,6 +5336,18 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     <sink_key>0</sink_key>
   </connection>
   <connection>
+    <source_block_id>blocks_complex_to_float_0</source_block_id>
+    <sink_block_id>blocks_wavfile_sink_1</sink_block_id>
+    <source_key>1</source_key>
+    <sink_key>1</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_complex_to_float_0</source_block_id>
+    <sink_block_id>blocks_wavfile_sink_1</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
     <source_block_id>blocks_float_to_char_0</source_block_id>
     <sink_block_id>blocks_file_sink_0</sink_block_id>
     <source_key>0</source_key>
@@ -5286,6 +5380,12 @@ Select a path to save the output file in th efollowing block --&gt;</value>
   <connection>
     <source_block_id>rational_resampler_xxx_0</source_block_id>
     <sink_block_id>analog_agc_xx_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>rational_resampler_xxx_0</source_block_id>
+    <sink_block_id>blocks_complex_to_float_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
