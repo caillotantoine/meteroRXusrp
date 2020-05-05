@@ -179,7 +179,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>value</key>
-      <value>16</value>
+      <value>4</value>
     </param>
   </block>
   <block>
@@ -300,6 +300,53 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
   </block>
   <block>
+    <key>variable_qtgui_check_box</key>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>false</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(288, 552)</value>
+    </param>
+    <param>
+      <key>gui_hint</key>
+      <value>qtgui_tab_widget_0@0 : 0,3,1,1</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>record</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>Raw I/Q Record</value>
+    </param>
+    <param>
+      <key>true</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>int</value>
+    </param>
+  </block>
+  <block>
     <key>variable_qtgui_range</key>
     <param>
       <key>comment</key>
@@ -319,7 +366,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>gui_hint</key>
-      <value>qtgui_tab_widget_0@0 : 0,0,1,1</value>
+      <value>qtgui_tab_widget_0@0 : 0,0,1,2</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -382,7 +429,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>gui_hint</key>
-      <value>qtgui_tab_widget_0@0 : 0,1,1,1</value>
+      <value>qtgui_tab_widget_0@0 : 0,2,1,1</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -402,7 +449,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>label2</key>
-      <value></value>
+      <value>Test FM</value>
     </param>
     <param>
       <key>label3</key>
@@ -422,7 +469,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>num_opts</key>
-      <value>2</value>
+      <value>3</value>
     </param>
     <param>
       <key>option0</key>
@@ -434,7 +481,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>option2</key>
-      <value>2</value>
+      <value>101.8e6</value>
     </param>
     <param>
       <key>option3</key>
@@ -539,7 +586,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>value</key>
-      <value>usrp_samp_rate / decim_factor</value>
+      <value>140e3</value>
     </param>
   </block>
   <block>
@@ -593,7 +640,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>value</key>
-      <value>2.5e6</value>
+      <value>signal_samp_rate*decim_factor</value>
     </param>
   </block>
   <block>
@@ -612,7 +659,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>center_freq0</key>
-      <value>rx_freq</value>
+      <value>rx_freq+signal_samp_rate</value>
     </param>
     <param>
       <key>dc_offs_enb0</key>
@@ -1780,7 +1827,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(480, 12)</value>
+      <value>(488, 12)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1943,7 +1990,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>comment</key>
-      <value></value>
+      <value>doit être au bon samp_rate</value>
     </param>
     <param>
       <key>affinity</key>
@@ -1955,11 +2002,11 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(896, 24)</value>
+      <value>(1024, 744)</value>
     </param>
     <param>
       <key>_rotation</key>
-      <value>0</value>
+      <value>180</value>
     </param>
     <param>
       <key>gain</key>
@@ -2014,7 +2061,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(712, 764)</value>
+      <value>(664, 900)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2042,6 +2089,69 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
   </block>
   <block>
+    <key>analog_sig_source_x</key>
+    <param>
+      <key>amp</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>freq</key>
+      <value>signal_samp_rate</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(728, 212)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>180</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>analog_sig_source_x_0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>offset</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>complex</value>
+    </param>
+    <param>
+      <key>samp_rate</key>
+      <value>usrp_samp_rate</value>
+    </param>
+    <param>
+      <key>waveform</key>
+      <value>analog.GR_COS_WAVE</value>
+    </param>
+  </block>
+  <block>
     <key>blocks_complex_to_float</key>
     <param>
       <key>alias</key>
@@ -2061,11 +2171,11 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(824, 120)</value>
+      <value>(856, 504)</value>
     </param>
     <param>
       <key>_rotation</key>
-      <value>270</value>
+      <value>0</value>
     </param>
     <param>
       <key>id</key>
@@ -2112,7 +2222,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1040, 752)</value>
+      <value>(992, 888)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2155,7 +2265,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(880, 764)</value>
+      <value>(832, 900)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2180,6 +2290,104 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     <param>
       <key>vlen</key>
       <value>1</value>
+    </param>
+  </block>
+  <block>
+    <key>blocks_multiply_xx</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(776, 120)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>blocks_multiply_xx_0</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>complex</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>num_inputs</key>
+      <value>2</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>1</value>
+    </param>
+  </block>
+  <block>
+    <key>blocks_mute_xx</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(736, 504)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>blocks_mute_xx_0</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>complex</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>mute</key>
+      <value>record</value>
     </param>
   </block>
   <block>
@@ -2210,11 +2418,11 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(824, 312)</value>
+      <value>(808, 584)</value>
     </param>
     <param>
       <key>_rotation</key>
-      <value>270</value>
+      <value>180</value>
     </param>
     <param>
       <key>id</key>
@@ -2249,7 +2457,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(464, 572)</value>
+      <value>(408, 772)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2316,7 +2524,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(456, 764)</value>
+      <value>(408, 900)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2355,7 +2563,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(656, 504)</value>
+      <value>(600, 704)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2480,6 +2688,81 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
   </block>
   <block>
+    <key>low_pass_filter</key>
+    <param>
+      <key>beta</key>
+      <value>6.76</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>cutoff_freq</key>
+      <value>signal_samp_rate</value>
+    </param>
+    <param>
+      <key>decim</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>fir_filter_ccf</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(904, 92)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>gain</key>
+      <value>2</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>low_pass_filter_0</value>
+    </param>
+    <param>
+      <key>interp</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>samp_rate</key>
+      <value>usrp_samp_rate</value>
+    </param>
+    <param>
+      <key>width</key>
+      <value>25e3</value>
+    </param>
+    <param>
+      <key>win</key>
+      <value>firdes.WIN_HAMMING</value>
+    </param>
+  </block>
+  <block>
     <key>qtgui_const_sink_x</key>
     <param>
       <key>autoscale</key>
@@ -2507,7 +2790,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(456, 684)</value>
+      <value>(152, 788)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -2515,7 +2798,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>_rotation</key>
-      <value>0</value>
+      <value>180</value>
     </param>
     <param>
       <key>grid</key>
@@ -2811,19 +3094,19 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>xmax</key>
-      <value>0.5</value>
+      <value>1</value>
     </param>
     <param>
       <key>xmin</key>
-      <value>-0.5</value>
+      <value>-1</value>
     </param>
     <param>
       <key>ymax</key>
-      <value>0.5</value>
+      <value>1</value>
     </param>
     <param>
       <key>ymin</key>
-      <value>-0.5</value>
+      <value>-1</value>
     </param>
   </block>
   <block>
@@ -2874,15 +3157,15 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1096, 24)</value>
+      <value>(992, 416)</value>
     </param>
     <param>
       <key>gui_hint</key>
-      <value>qtgui_tab_widget_0@1 : 1,0,1,2</value>
+      <value>qtgui_tab_widget_0@1 : 0,0,1,1</value>
     </param>
     <param>
       <key>_rotation</key>
-      <value>0</value>
+      <value>180</value>
     </param>
     <param>
       <key>grid</key>
@@ -2894,7 +3177,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>legend</key>
-      <value>False</value>
+      <value>True</value>
     </param>
     <param>
       <key>alpha1</key>
@@ -3066,7 +3349,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>name</key>
-      <value>"FFT"</value>
+      <value>""</value>
     </param>
     <param>
       <key>nconnections</key>
@@ -3149,7 +3432,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>fc</key>
-      <value>rx_freq</value>
+      <value>rx_freq+signal_samp_rate</value>
     </param>
     <param>
       <key>comment</key>
@@ -3157,7 +3440,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>ctrlpanel</key>
-      <value>False</value>
+      <value>True</value>
     </param>
     <param>
       <key>affinity</key>
@@ -3173,11 +3456,11 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(472, 328)</value>
+      <value>(480, 304)</value>
     </param>
     <param>
       <key>gui_hint</key>
-      <value>qtgui_tab_widget_0@0 : 1,0,1,2</value>
+      <value>qtgui_tab_widget_0@0 : 1,0,1,4</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -3185,7 +3468,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>grid</key>
-      <value>False</value>
+      <value>True</value>
     </param>
     <param>
       <key>id</key>
@@ -3193,7 +3476,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>legend</key>
-      <value>False</value>
+      <value>True</value>
     </param>
     <param>
       <key>alpha1</key>
@@ -3205,7 +3488,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>label1</key>
-      <value></value>
+      <value>Filtered</value>
     </param>
     <param>
       <key>width1</key>
@@ -3237,7 +3520,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>label2</key>
-      <value></value>
+      <value>Shifted</value>
     </param>
     <param>
       <key>width2</key>
@@ -3249,11 +3532,11 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>color3</key>
-      <value>"green"</value>
+      <value>"black"</value>
     </param>
     <param>
       <key>label3</key>
-      <value></value>
+      <value>RAW</value>
     </param>
     <param>
       <key>width3</key>
@@ -3365,11 +3648,11 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>name</key>
-      <value>""</value>
+      <value>Centered on RAW signal</value>
     </param>
     <param>
       <key>nconnections</key>
-      <value>1</value>
+      <value>3</value>
     </param>
     <param>
       <key>showports</key>
@@ -3413,7 +3696,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>ymax</key>
-      <value>10</value>
+      <value>0</value>
     </param>
     <param>
       <key>ymin</key>
@@ -3575,11 +3858,11 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(472, 400)</value>
+      <value>(480, 416)</value>
     </param>
     <param>
       <key>gui_hint</key>
-      <value>qtgui_tab_widget_0@0 : 2,0,1,2</value>
+      <value>qtgui_tab_widget_0@0 : 2,0,1,4</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -3587,7 +3870,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>grid</key>
-      <value>False</value>
+      <value>True</value>
     </param>
     <param>
       <key>id</key>
@@ -3595,11 +3878,11 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>int_max</key>
-      <value>10</value>
+      <value>-30</value>
     </param>
     <param>
       <key>int_min</key>
-      <value>-140</value>
+      <value>-100</value>
     </param>
     <param>
       <key>legend</key>
@@ -3611,7 +3894,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>color1</key>
-      <value>0</value>
+      <value>6</value>
     </param>
     <param>
       <key>label1</key>
@@ -3735,7 +4018,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>name</key>
-      <value>""</value>
+      <value>Shifted signal</value>
     </param>
     <param>
       <key>nconnections</key>
@@ -3790,7 +4073,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(720, 24)</value>
+      <value>(1088, 112)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -3853,7 +4136,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(864, 532)</value>
+      <value>(808, 732)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -3920,7 +4203,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>freq0</key>
-      <value>rx_freq</value>
+      <value>rx_freq-signal_samp_rate</value>
     </param>
     <param>
       <key>gain_mode0</key>
@@ -5196,7 +5479,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(472, 152)</value>
+      <value>(472, 128)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -5301,27 +5584,21 @@ Select a path to save the output file in th efollowing block --&gt;</value>
   </block>
   <connection>
     <source_block_id>USRP</source_block_id>
+    <sink_block_id>blocks_multiply_xx_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>USRP</source_block_id>
+    <sink_block_id>blocks_mute_xx_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>USRP</source_block_id>
     <sink_block_id>qtgui_freq_sink_x_1</sink_block_id>
     <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>USRP</source_block_id>
-    <sink_block_id>qtgui_waterfall_sink_x_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>USRP</source_block_id>
-    <sink_block_id>rational_resampler_xxx_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>analog_agc_xx_0</source_block_id>
-    <sink_block_id>qtgui_freq_sink_x_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
+    <sink_key>2</sink_key>
   </connection>
   <connection>
     <source_block_id>analog_agc_xx_0</source_block_id>
@@ -5334,6 +5611,12 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     <sink_block_id>blocks_float_to_char_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>analog_sig_source_x_0</source_block_id>
+    <sink_block_id>blocks_multiply_xx_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>1</sink_key>
   </connection>
   <connection>
     <source_block_id>blocks_complex_to_float_0</source_block_id>
@@ -5350,6 +5633,30 @@ Select a path to save the output file in th efollowing block --&gt;</value>
   <connection>
     <source_block_id>blocks_float_to_char_0</source_block_id>
     <sink_block_id>blocks_file_sink_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_multiply_xx_0</source_block_id>
+    <sink_block_id>low_pass_filter_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_multiply_xx_0</source_block_id>
+    <sink_block_id>qtgui_freq_sink_x_1</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>1</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_multiply_xx_0</source_block_id>
+    <sink_block_id>qtgui_waterfall_sink_x_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_mute_xx_0</source_block_id>
+    <sink_block_id>blocks_complex_to_float_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
@@ -5378,6 +5685,18 @@ Select a path to save the output file in th efollowing block --&gt;</value>
     <sink_key>0</sink_key>
   </connection>
   <connection>
+    <source_block_id>low_pass_filter_0</source_block_id>
+    <sink_block_id>qtgui_freq_sink_x_1</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>low_pass_filter_0</source_block_id>
+    <sink_block_id>rational_resampler_xxx_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
     <source_block_id>rational_resampler_xxx_0</source_block_id>
     <sink_block_id>analog_agc_xx_0</sink_block_id>
     <source_key>0</source_key>
@@ -5385,7 +5704,7 @@ Select a path to save the output file in th efollowing block --&gt;</value>
   </connection>
   <connection>
     <source_block_id>rational_resampler_xxx_0</source_block_id>
-    <sink_block_id>blocks_complex_to_float_0</sink_block_id>
+    <sink_block_id>qtgui_freq_sink_x_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
@@ -5397,20 +5716,20 @@ Select a path to save the output file in th efollowing block --&gt;</value>
   </connection>
   <connection>
     <source_block_id>rtlsdr_source_0</source_block_id>
+    <sink_block_id>blocks_multiply_xx_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>rtlsdr_source_0</source_block_id>
+    <sink_block_id>blocks_mute_xx_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>rtlsdr_source_0</source_block_id>
     <sink_block_id>qtgui_freq_sink_x_1</sink_block_id>
     <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>rtlsdr_source_0</source_block_id>
-    <sink_block_id>qtgui_waterfall_sink_x_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>rtlsdr_source_0</source_block_id>
-    <sink_block_id>rational_resampler_xxx_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
+    <sink_key>2</sink_key>
   </connection>
 </flow_graph>
